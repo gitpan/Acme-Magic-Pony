@@ -1,6 +1,6 @@
 package Acme::Magic::Pony;
 
-# $Id: Pony.pm 107 2008-10-02 18:46:46Z jeff $
+# $Id: Pony.pm 119 2008-10-24 20:02:10Z jeff $
 
 use warnings;
 use strict;
@@ -12,7 +12,7 @@ sub _magic_pony {
     if( $@ ){ # oops, they don't have it!
         ( my $module = $file ) =~ s/\//::/g;
         $module =~ s/\.pm$//g;
-        warn "You appear to be missing $module, but don't worry, a Magic Pony is hear to help!\n";
+        warn "You appear to be missing $module, but don't worry, a Magic Pony is here to help!\n";
         *CORE::GLOBAL::require = *CORE::require; # disable magic pony while we go for a ride...
         CPAN::Shell->install($module); 
         CORE::require $file;
@@ -30,11 +30,11 @@ Acme::Magic::Pony - Schwern asked for a Magic Pony!
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 =head1 SYNOPSIS
@@ -42,8 +42,9 @@ our $VERSION = '0.01';
 
     use Acme::Magic::Pony;
 
-That's it.  Every time you use any module, Acme::Magic::Pony will look to see if you have it.  If you do, it does nothing, 
-but if you're missing it, it will attempt to use CPAN::Shell to install it.
+That's it.  Every time you use any module, Acme::Magic::Pony will look to see if 
+you have it.  If you do, it does nothing, but if you're missing it, it will 
+attempt to use CPAN::Shell to install it.
 
 
 =head1 EXPORT
@@ -64,9 +65,10 @@ Jeff Lavallee, C<< <jeff at zeroclue.com> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-acme-magic-pony at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Acme-Magic-Pony>.  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
+Please report any bugs or feature requests to C<bug-acme-magic-pony at rt.cpan.org>, 
+or through the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Acme-Magic-Pony>.  
+I will be notified, and then you'll automatically be notified of progress on your 
+bug as I make changes.
 
 
 =head1 SUPPORT
@@ -122,18 +124,22 @@ under the same terms as Perl itself.
 
 =head1 TODO
 
-Acme::Magic::Pony doesn't offer to upgrade modules that aren't at the most recent version.  Maybe it's not so magic after 
-all!
+Acme::Magic::Pony doesn't offer to upgrade modules that aren't at the most recent 
+version.  Maybe it's not so magic after all!
 
 =head1 NOTE
 
-This might be vaguely useful when writing new code on a system that doesn't have modules you're used to using.  It'll fire 
-up CPAN for you and install things as you go.  But heaven forbid you leave "use Acme::Magic::Pony" around in your code, it 
-will be more or less guaranteed to cause anyone who runs across your code no end of headaches.
+This might be vaguely useful when writing new code on a system that doesn't have 
+modules you're used to using.  It'll fire up CPAN for you and install things as 
+you go.  But heaven forbid you leave "use Acme::Magic::Pony" around in your code, 
+it will be more or less guaranteed to cause anyone who runs across your code no 
+end of headaches.
 
-I'm sure this module could be vastly improved.  Please file bugs and/or send me email directly.  In particular, I'm not 
-sure what a good testing strategy is - I suppose I could attempt to identify some module that the user doesn't have, and 
-see that Acme::Magic::Pony installs it and that it can then be used, but that seems rather intrusive and risky.  Ideas?
+I'm sure this module could be vastly improved.  Please file bugs and/or send me 
+email directly.  In particular, I'm not sure what a good testing strategy is - 
+I suppose I could attempt to identify some module that the user doesn't have, 
+and see that Acme::Magic::Pony installs it and that it can then be used, but 
+that seems rather intrusive and risky.  Ideas?
 
 
 =cut
